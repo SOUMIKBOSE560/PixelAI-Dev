@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import axios from 'axios';
 
-console.log('Server is running');
+// console.log('Server is running');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -32,12 +32,12 @@ app.get('/api/words', async (req, res) => {
     
     res.json(words);
   } catch (error) {
-    console.error('Error fetching words:', error);
+    // console.error('Error fetching words:', error);
     res.status(500).json({ error: 'Failed to fetch words' });
   }
 });
 
 // Start the server
 app.listen(PORT, () => {
-  console.warn(`Server running on port ${PORT}`);
+  // console.warn(`Server running on port ${PORT}`);
 });

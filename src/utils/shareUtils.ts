@@ -28,7 +28,7 @@ export async function shareImage(image: GeneratedImage) {
       throw new Error("Sharing not supported on this device");
     }
   } catch (error) {
-    console.error("Error sharing image:", error);
+    // console.error("Error sharing image:", error);
     toast.error("Failed to share image");
     return false;
   }

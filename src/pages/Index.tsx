@@ -60,7 +60,7 @@ const Index = () => {
       setHistoryImages(imageGenerationService.getHistory());
       setActiveTab("results");
     } catch (error) {
-      console.error("Error generating images:", error);
+      // console.error("Error generating images:", error);
     } finally {
       setGeneratingImages(false);
     }

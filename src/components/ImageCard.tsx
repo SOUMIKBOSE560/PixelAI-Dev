@@ -29,7 +29,7 @@ export function ImageCard({ image, className }: ImageCardProps) {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     } catch (error) {
-      console.error("Error downloading image:", error);
+      // console.error("Error downloading image:", error);
       window.open(image.url, '_blank');
     }
   };

@@ -78,7 +78,7 @@ class ImageGenerationService {
       return data.imageUrl;
 
     } catch (error) {
-      console.error('Network/Request Error:', error);
+      // console.error('Network/Request Error:', error);
       this.showToast('error', "Network Error", "Failed to connect to the image generation service");
       throw error;
     }
@@ -122,7 +122,7 @@ class ImageGenerationService {
             quotaExceeded = true;
             break; // Exit the loop immediately on quota exceeded
           }
-          console.error("Error generating single image:", error);
+          // console.error("Error generating single image:", error);
           // Don't show toast here - we'll handle it after the loop
         }
       }
@@ -145,7 +145,7 @@ class ImageGenerationService {
       this.saveToHistory(generatedImages);
       return generatedImages;
     } catch (error) {
-      console.error("Error generating images:", error);
+      // console.error("Error generating images:", error);
       // Only show toast if it's not a quota error (already handled) or API key error (handled at start)
       if (!(error instanceof Error) ||
         (!error.message.includes("Quota") && !error.message.includes("API key not set"))) {
@@ -190,7 +190,7 @@ class ImageGenerationService {
         createdAt: new Date(item.createdAt),
       }));
     } catch (error) {
-      console.error("Error parsing history:", error);
+      // console.error("Error parsing history:", error);
       return [];
     }
   }
@@ -207,7 +207,7 @@ class ImageGenerationService {
 
       localStorage.setItem("aiImageGeneratorHistory", JSON.stringify(historyForStorage));
     } catch (error) {
-      console.error("Error saving to history:", error);
+      // console.error("Error saving to history:", error);
     }
   }
 
