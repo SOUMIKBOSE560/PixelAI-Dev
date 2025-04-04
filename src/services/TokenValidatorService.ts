@@ -1,23 +1,30 @@
+import axios from 'axios';
+
 const validateToken = async (token: string): Promise<boolean> => {
     const url = `${import.meta.env.VITE_API_BASE_URL}/api/pixel_ai/validate-token`;
+    
     try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${import.meta.env.VITE_API_KEY}`,
-            },
-            body: JSON.stringify({ apiKey: token }),
-        });
+        const response = await axios.post(
+            url,
+            { apiKey: token }, // Request body
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${import.meta.env.VITE_API_KEY}`,
+                },
+            }
+        );
 
-        if (!response.ok) {
-            return false;
-        }
-
-        const data = await response.json();
-        return data.success === "Token is valid";
+        return response.data.success === "Token is valid";
     } catch (error) {
-        console.error("Token validation error:", error);
+        if (axios.isAxiosError(error)) {
+            console.error(
+                "Token validation failed:",
+                error.response?.data || error.message
+            );
+        } else {
+            console.error("Unexpected error:", error);
+        }
         return false;
     }
 };
