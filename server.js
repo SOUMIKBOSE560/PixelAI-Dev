@@ -1,11 +1,15 @@
 import express from 'express';
 import cors from 'cors';
 import axios from 'axios';
+import dotenv from 'dotenv';
 
-// console.log('Server is running');
+// Load environment variables
+dotenv.config();
+
+console.log('Server is running');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;  // Changed from import.meta.env to process.env
 
 // Middleware
 app.use(cors());
@@ -32,12 +36,12 @@ app.get('/api/words', async (req, res) => {
     
     res.json(words);
   } catch (error) {
-    // console.error('Error fetching words:', error);
+    console.error('Error fetching words:', error);
     res.status(500).json({ error: 'Failed to fetch words' });
   }
 });
 
 // Start the server
 app.listen(PORT, () => {
-  // console.warn(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);  // Changed from console.warn to console.log
 });

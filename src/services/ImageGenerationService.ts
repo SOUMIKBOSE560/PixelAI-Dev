@@ -45,7 +45,7 @@ class ImageGenerationService {
 
   private async generateImage(params: GenerateImageParams): Promise<string> {
     const { apiKey, prompt, negativePrompt, model, size } = params;
-    const url = `${import.meta.env.VITE_API_BASE_URL}/api/generate-image`;
+    const url = `${import.meta.env.VITE_API_BASE_URL}/api/pixel_ai/generate-image`;
 
     try {
       const response = await fetch(url, {
