@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const validateToken = async (token: string): Promise<boolean> => {
-    const url = `${import.meta.env.VITE_API_BASE_URL}/api/pixel_ai/validate-token`;
+    const url = `${import.meta.env.VITE_API_BASE_URL}/api/pixeldream_ai/validate-token`;
 
     try {
         const response = await axios.post(

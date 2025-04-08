@@ -17,10 +17,11 @@ interface HistorySectionProps {
 export function HistorySection({ historyImages, onHistoryUpdate }: HistorySectionProps) {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
-  const handleClearHistory = () => {
+  const handleClearHistory = async () => {
     imageGenerationService.clearHistory();
     onHistoryUpdate([]);
     toast.success("History cleared");
+    imageGenerationService.clearHistoryFromDatabase();
   };
 
   return (

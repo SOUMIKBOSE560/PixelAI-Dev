@@ -45,7 +45,7 @@ class ImageGenerationService {
 
   private async generateImage(params: GenerateImageParams): Promise<string> {
     const { apiKey, prompt, negativePrompt, model, size } = params;
-    const url = `${import.meta.env.VITE_API_BASE_URL}/api/pixel_ai/generate-image`;
+    const url = `${import.meta.env.VITE_API_BASE_URL}/api/pixeldream_ai/generate-image`;
 
     try {
       const response = await fetch(url, {
@@ -213,6 +213,46 @@ class ImageGenerationService {
 
   clearHistory() {
     localStorage.removeItem("aiImageGeneratorHistory");
+  }
+
+  async clearHistoryFromDatabase(): Promise<{ success: boolean; message: string }> {
+    try {
+      const apiKey = this.getApiKey();
+      if (!apiKey) {
+        // this.showToast('error', "API Key Required", "Please set your API key first");
+        throw new Error("API key not set");
+      }
+
+      // this.showToast('info', "Clearing History", "Deleting your image history from the database...");
+
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/pixeldream_ai/clear-history`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_API_KEY}`,
+        },
+        body: JSON.stringify({ apiKey })
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`API request failed with status ${response.status}: ${errorText}`);
+      }
+
+      const result = await response.json();
+
+      if (result.success) {
+        // this.showToast('success', "History Cleared", result.message);
+        return result;
+      } else {
+        // this.showToast('error', "Clear Failed", result.message || "Failed to clear history");
+        // throw new Error(result.message);
+      }
+    } catch (error) {
+      // console.error('Error clearing history:', error);
+      // this.showToast('error', "Clear Error", "Failed to clear history. Please try again.");
+      throw error;
+    }
   }
 }
 
