@@ -5,6 +5,12 @@ import { Size } from "@/components/SizeSelector";
 // AI Model options
 export const MODELS: Model[] = [
   {
+    id: "imagen-3",
+    name: "Imagen 3",
+    description:
+      "Imagen 3 is a powerful AI model from Google that excels in generating high-quality images from textual prompts. It's known for its ability to produce detailed and realistic images, making it a popular choice for a variety of creative applications but it employs safety filters to prevent the generation of harmful content.",
+  },
+  {
     id: "dalle3",
     name: "DALL-E 3",
     description:
