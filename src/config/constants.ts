@@ -40,10 +40,22 @@ export const MODELS: Model[] = [
       "Flux Pro Ultra extends the capabilities of the Flux line with advanced features for image generation and processing, designed to meet the demands of professional applications.",
   },
   {
+    id: "stablediffusion-v3-medium",
+    name: "Stable Diffusion-V3 Medium",
+    description:
+      "Stable Diffusion-V3 Medium is a model in the Stable Diffusion series that offers a balance between performance and resource efficiency. It is designed to support a variety of creative tasks while optimizing computational requirements.",
+  },
+  {
     id: "stablediffusion",
     name: "Stable Diffusion-XL",
     description:
       "Stable Diffusion-XL is an enhanced version of the Stable Diffusion model, optimized for high-resolution image synthesis. It emphasizes improved detail and consistency for professional creative workflows.",
+  },
+  {
+    id: "stablediffusion-v35-large",
+    name: "Stable Diffusion-V35 Large",
+    description:
+      "Stable Diffusion-V35 Large is a high-capacity model in the Stable Diffusion series, designed for generating detailed and high-quality images. It prioritizes image fidelity and is well-suited for professional creative workflows.",
   }
 ];
 
