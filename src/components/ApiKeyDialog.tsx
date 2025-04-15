@@ -69,7 +69,7 @@ export function ApiKeyDialog({ open, onOpenChange }: ApiKeyDialogProps) {
             />
             <p className="text-sm text-muted-foreground">
               Generate your API key from{" "}
-              <a href="https://chatcsvandpdf.vercel.app/apidoc" target="_blank" rel="noopener noreferrer" className="underline">Here</a>
+              <a href="https://chatcsvandpdf.vercel.app/apidoc" target="_self" rel="noopener noreferrer" className="underline">Here</a>
             </p>
           </div>
         </div>
